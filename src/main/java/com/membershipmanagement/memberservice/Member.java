@@ -7,13 +7,15 @@ public class Member {
     private String name;
     private Date birthDate;
     private Date enrollmentDay;
+    private String schoolName;
     private int grade;
 
-    public Member(int id, String name, Date birthDate, Date enrollmentDay, int grade) {
+    public Member(int id, String name, Date birthDate, Date enrollmentDay, String schoolName, int grade) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
         this.enrollmentDay = enrollmentDay;
+        this.schoolName = schoolName;
         this.grade = grade;
     }
 
@@ -31,6 +33,10 @@ public class Member {
 
     public Date getEnrollmentDay() {
         return enrollmentDay;
+    }
+
+    public String getSchoolName() {
+        return schoolName;
     }
 
     public int getGrade() {
