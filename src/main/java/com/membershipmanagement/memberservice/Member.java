@@ -1,16 +1,17 @@
 package com.membershipmanagement.memberservice;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Member {
     private int id;
     private String name;
-    private Date birthDate;
-    private Date enrollmentDay;
+    private LocalDate birthDate;
+    private LocalDate enrollmentDay;
     private String schoolName;
     private int grade;
 
-    public Member(int id, String name, Date birthDate, Date enrollmentDay, String schoolName, int grade) {
+    public Member(int id, String name, LocalDate birthDate, LocalDate enrollmentDay, String schoolName, int grade) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
@@ -27,11 +28,11 @@ public class Member {
         return name;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public Date getEnrollmentDay() {
+    public LocalDate getEnrollmentDay() {
         return enrollmentDay;
     }
 
