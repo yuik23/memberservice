@@ -14,8 +14,14 @@ public class MemberController {
     }
 
     @GetMapping("/members")
-    public List<Member> getMembers(){
-        List<Member> members=memberMapper.findAll();
+    public List<Member> getMembers() {
+        List<Member> members = memberMapper.findAll();
         return members;
+    }
+
+    @GetMapping("/names")
+    public List<String> getNames(SameGradeRequest request) {
+        List<String> names = memberMapper.findByGrade(request.getEndsWith(), request.getGrade());
+        return names;
     }
 }
