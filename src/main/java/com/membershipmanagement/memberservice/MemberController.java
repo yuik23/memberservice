@@ -27,8 +27,8 @@ public class MemberController {
 
 
     @GetMapping("/names")
-    public List<String> getNames(SameGradeRequest request) {
-        List<String> names = memberService.findName(request);
+    public List<String> getNames(SameGradeRequest gradeRequest) {
+        List<String> names = memberService.findName(gradeRequest);
         return names;
     }
 }

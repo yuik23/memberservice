@@ -20,11 +20,15 @@ public class MemberService {
 
     public Member findMember(int id) {
         Optional<Member> member = this.memberMapper.findById(id);
-        return member.get(); // Optional.get()は値が存在しない場合例外を発⽣させる
+        if (member.isPresent()) {
+            return member.get();
+        } else {
+            throw new MemberNotFoundException("member not found");
+        }
     }
 
-    public List<String> findName(SameGradeRequest request) {
-        List<String> names = this.memberMapper.findByGrade(request.getEndsWith(), request.getGrade());
+    public List<String> findName(SameGradeRequest gradeRequest) {
+        List<String> names = this.memberMapper.findByGrade(gradeRequest.getEndsWith(), gradeRequest.getGrade());
         return names;
     }
 }
