@@ -27,8 +27,8 @@ public class MemberService {
         }
     }
 
-    public List<String> findName(SameGradeRequest gradeRequest) {
-        List<String> names = this.memberMapper.findByGrade(gradeRequest.getEndsWith(), gradeRequest.getGrade());
+    public List<String> findName(String endsWith, int grade) {
+        List<String> names = this.memberMapper.findByGrade(endsWith, grade);
         return names;
     }
 }
