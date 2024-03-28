@@ -20,11 +20,7 @@ public class MemberService {
 
     public Member findMember(int id) {
         Optional<Member> member = this.memberMapper.findById(id);
-        if (member.isPresent()) {
-            return member.get();
-        } else {
-            throw new MemberNotFoundException("member not found");
-        }
+        return member.orElseThrow(() -> new MemberNotFoundException("member not found"));
     }
 
     public List<String> findName(String endsWith, int grade) {
