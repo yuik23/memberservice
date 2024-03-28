@@ -1,27 +1,34 @@
 package com.membershipmanagement.memberservice;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
 public class MemberController {
-    private MemberMapper memberMapper;
+    private MemberService memberService;
 
-    public MemberController(MemberMapper memberMapper) {
-        this.memberMapper = memberMapper;
+    public MemberController(MemberService memberService) {
+        this.memberService = memberService;
     }
 
     @GetMapping("/members")
-    public List<Member> getMembers() {
-        List<Member> members = memberMapper.findAll();
-        return members;
+    public List<Member> getAllMembers() {
+        List<Member> allMembers = memberService.findAll();
+        return allMembers;
     }
+
+    @GetMapping("/members/{id}")
+    public Member getMember(@PathVariable("id") int id) {
+        return memberService.findMember(id);
+    }
+
 
     @GetMapping("/names")
     public List<String> getNames(SameGradeRequest request) {
-        List<String> names = memberMapper.findByGrade(request.getEndsWith(), request.getGrade());
+        List<String> names = memberService.findName(request);
         return names;
     }
 }
